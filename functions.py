@@ -166,7 +166,76 @@ if __name__ == "__main__":
             print("\n")
         elif opcion == 4:   
             print("Creando grafo de usuarios y películas...")
-            
+            neo4j_func.create_node("User", {"name": "Nelson", "userId": 6})
+            neo4j_func.create_node(
+                label="Person:Actor:Director",
+                properties={
+                    "name": "Chadwick Boseman",
+                    "tmdbId": 12345,
+                    "born": "1976-11-29T00:00:00",
+                    "died": "2020-08-28T00:00:00",
+                    "bornIn": "Anderson, South Carolina, USA",
+                    "url": "https://www.themoviedb.org/person/12345",
+                    "imdbId": 67890,
+                    "bio": "American actor known for playing Black Panther.",
+                    "poster": "https://image.tmdb.org/t/p/original/poster.jpg"
+                }
+            )
+            neo4j_func.create_node(
+                label="Person:Actor",
+                properties={
+                    "name": "Keanu Reeves",
+                    "tmdbId": 23456,
+                    "born": "1964-09-02T00:00:00",
+                    "died": None,
+                    "bornIn": "Beirut, Lebanon",
+                    "url": "https://www.themoviedb.org/person/23456",
+                    "bio": "Canadian actor known for playing Neo in The Matrix.",
+                    "poster": "https://image.tmdb.org/t/p/original/poster.jpg"
+                }
+            )
+            neo4j_func.create_node(
+                label="Person:Director",
+                properties={
+                    "name": "Lana Wachowski",
+                    "tmdbId": 34567,
+                    "born": "1965-06-21T00:00:00",
+                    "died": None,
+                    "bornIn": "Chicago, Illinois, USA",
+                    "url": "https://www.themoviedb.org/person/34567",
+                    "bio": "American film director known for co-directing The Matrix trilogy.",
+                    "poster": "https://image.tmdb.org/t/p/original/poster.jpg"
+                }
+            )
+            neo4j_func.create_node("Genre", {"name": "Action"})
+            neo4j_func.create_node(
+                label="Movie",
+                properties={
+                    "title": "Black Panther",
+                    "tmdbId": 284054,
+                    "released": "2018-02-16T00:00:00",
+                    "imdbRating": 7.3,
+                    "movieId": 3,
+                    "year": 2018,
+                    "imdbId": 1825683,
+                    "runtime": 134,
+                    "countries": ["USA"],
+                    "imdbVotes": 690000,
+                    "url": "https://www.themoviedb.org/movie/284054",
+                    "revenue": 1346913161,
+                    "plot": "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation...",
+                    "poster": "https://image.tmdb.org/t/p/original/poster.jpg",
+                    "budget": 200000000,
+                    "languages": ["English", "Spanish", "Korean"]
+                }
+            )
+            neo4j_func.create_relationship("Person:Actor:Director", {"name": "Chadwick Boseman", "tmdbId": 12345}, "Movie", {"title": "Black Panther", "tmdbId": 284054}, "ACTED_IN", {"role": "T'Challa / Black Panther"})
+            neo4j_func.create_relationship("Person:Actor:Director", {"name": "Chadwick Boseman", "tmdbId": 12345}, "Movie", {"title": "Black Panther", "tmdbId": 284054}, "DIRECTED")
+            neo4j_func.create_relationship("Person:Actor", {"name": "Keanu Reeves", "tmdbId": 23456}, "Movie", {"title": "Black Panther", "tmdbId": 284054}, "ACTED_IN", {"role": "Neo"})
+            neo4j_func.create_relationship("Person:Director", {"name": "Lana Wachowski", "tmdbId": 34567}, "Movie", {"title": "Black Panther", "tmdbId": 284054}, "DIRECTED", {"role": "Director"})
+            neo4j_func.create_relationship("User", {"name": "Nelson", "userId": 6}, "Movie", {"title": "Black Panther", "tmdbId": 284054}, "RATED", {"rating": 5, "timestamp": 123458})
+            neo4j_func.create_relationship("Movie", {"title": "Black Panther", "tmdbId": 284054}, "Genre", {"name": "Terror"}, "IN_GENRE")
+
 
 
     neo4j_func.connector.close()
