@@ -18,8 +18,10 @@ Laboratorio No. 3 The Game of Nodes Part I
 ![image](https://github.com/user-attachments/assets/5ff07e84-9156-45ee-bcb3-4a0da91bfeb3)
 
 ### Grafo generado
+![image](https://github.com/user-attachments/assets/2b20a6b5-9e4c-4162-876d-c252503d2dc5)
 
 
+![image](https://github.com/user-attachments/assets/4279b68b-47f2-4b5d-9ce7-b0a86ff93f27)
 
 
 
