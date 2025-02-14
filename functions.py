@@ -128,11 +128,12 @@ if __name__ == "__main__":
 
     opcion = 0
 
-    while opcion != 4:
+    while opcion != 5:
         print("1. Crear nodos")
         print("2. Crear relaciones")
         print("3. Buscar")
-        print("4. Salir")
+        print("4. Crear grafor de usuarios y películas")
+        print("5. Salir")
 
         opcion = int(input("Opción: "))
 
@@ -163,6 +164,8 @@ if __name__ == "__main__":
             print("Relación encontrada:\n")
             print(data)
             print("\n")
+        elif opcion == 4:   
+            print("Creando grafo de usuarios y películas...")
             
 
 
