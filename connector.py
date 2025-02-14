@@ -2,9 +2,6 @@ from neo4j import GraphDatabase
 import dotenv
 import os
 
-# id: cb9c1ece contraseña nelson: 5NKfsIo-v1iEjtiZS4BV8FN0bk09IgEaQ4Cs4FlxQGM
-# id: 0923c3a8 contraseña joaquín: J-c7J6DCItie9-v8r_PsH3ULukxFb2Dq6I4TE_fj_qk
-
 class Neo4jConnector:
     def __init__(self, env_file="creds.txt"):
         if not dotenv.load_dotenv(env_file):
